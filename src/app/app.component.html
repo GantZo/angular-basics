@@ -1,21 +1,4 @@
 <h1>Welcome to Angular!</h1>
-
-<ul>
-  <li *ngFor="let n of arr; let idx = index">
-    {{idx + 1}} <strong>{{ n }}</strong>
-  </li>
-</ul>
-<hr>
-<ul style="list-style: none;">
-  <li *ngFor="let post of objs">
-    <p>{{post.title}} <b>{{post.author}}</b></p>
-    <ul>
-      <li *ngFor="let c of post.comments">
-        <div>
-          <small>{{c.name}}</small>
-          <p>{{c.text}}</p>
-        </div>
-      </li>
-    </ul>
-  </li>
-</ul>
+<p>
+  {{ now | date: 'long' | uppercase }}
+</p>

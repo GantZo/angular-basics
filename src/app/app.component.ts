@@ -7,21 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  arr = [1, 1, 2, 3, 5, 8, 13]
-
-  objs = [
-    {
-      title: 'Post 1', author: 'Vladilen', comments:[
-        {name: 'Max', text:'lorem 1'},
-        {name: 'Max', text:'lorem 2'},
-        {name: 'Max', text:'lorem 3'}
-      ]},
-    {
-      title: 'Post 2', author: 'Michael', comments: [
-        {name: 'Max', text:'lorem 1'},
-        {name: 'Igor', text:'lorem 2'}
-      ]
-    }
-  ]
+  now: Date = new Date()
 
 }
