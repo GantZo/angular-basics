@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,6 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
 
-  title = 'Initial'
+  backgroundToggle = false
 
-  onInput(event: any) {
-    this.title  = event.target.value
-  }
 }
