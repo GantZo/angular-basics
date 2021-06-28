@@ -1,21 +1,5 @@
 <h1>Welcome to Angular!</h1>
-<!--<p>{{ title }}</p>-->
-<!--<p><strong>{{number -2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
-<!--<p><strong>{{40 + 2}}</strong></p>-->
-<!--<p><strong>{{'Hello' + ' World!'}}</strong></p>-->
 
-<button (click)="onClick()">Click me!</button>
+<input type="text" [(ngModel)]="title">
 
-<input
-  type="text"
-  (keyup)="onInput($event)"
-  (click)="onBlur(myInput.value)"
-  #myInput
->
-<p><strong>{{inputValue}}</strong></p>
-
-<hr>
-<app-post></app-post>
+<p>{{title}}</p>
