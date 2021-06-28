@@ -14,7 +14,7 @@ export interface Post {
 export class AppComponent {
   posts: Post[] = [
     {title: 'Post 1', text: 'Post body for Post Component', id: 1},
-    {title: 'Post 2', text: 'Second post body! yeah', id: 2}
+    {title: 'Post 2', text: 'Next post!', id: 2}
   ]
 
   updatePosts(post: Post) {
