@@ -4,11 +4,13 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 import {MultByPipe} from "./pipe/mult-by.pipe";
+import { ExMarksPipe } from './pipe/ex-marks.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MultByPipe
+    MultByPipe,
+    ExMarksPipe
   ],
   imports: [
     BrowserModule,
