@@ -4,4 +4,23 @@
   <p appStyle="red" [dStyles]="{border: '1px solid blue', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, minima?</p>
   <p appStyle="blue" [dStyles]="{border: '1px solid red', borderRadius: '15px'}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, voluptatibus?</p>
 
+  <button class="btn" (click)="isVisible = !isVisible">Toggle</button>
+
+  <div *ngIf="isVisible" class="wrap">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam culpa distinctio facere hic iste minus reiciendis sapiente tempora velit.</p>
+  </div>
+
+<!--  <ng-template [ngIf]="isVisible">-->
+<!--    <div class="wrap">-->
+<!--      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam culpa distinctio facere hic iste minus reiciendis sapiente tempora velit.</p>-->
+<!--    </div>-->
+<!--  </ng-template>-->
+
+  <div class="wrap" *appIfNot="isVisible">
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+<!--  <ng-template [appIfNot]="isVisible">-->
+<!--    <p>Lorem ipsum dolor sit amet.</p>-->
+<!--  </ng-template>-->
+
 </div>
