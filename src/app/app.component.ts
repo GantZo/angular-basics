@@ -30,5 +30,6 @@ export class AppComponent implements OnInit {
       const formData = {...this.form.value}
       console.log('Form Data: ', formData)
     }
+    console.log(this.form.controls)
   }
 }

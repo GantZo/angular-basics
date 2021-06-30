@@ -5,13 +5,27 @@
     <div class="form-control">
       <label>Email</label>
       <input type="text" placeholder="Email" formControlName="email">
-      <div class="validation"></div>
+      <div
+        *ngIf="form.controls['email']?.invalid && form.controls['email']?.touched"
+        class="validation"
+      >
+        <small *ngIf="form.controls['email'].hasError('required')">Поле не может быть пустым</small>
+        <small *ngIf="form.controls['email'].hasError('email')">Введите корректный email</small>
+      </div>
     </div>
 
     <div class="form-control">
       <label>Пароль</label>
       <input type="password" placeholder="Пароль" formControlName="password">
-      <div class="validation"></div>
+      <div
+        *ngIf="form.controls['password']?.invalid && form.controls['password']?.touched"
+        class="validation"
+      >
+        <small *ngIf="form.controls['password'].hasError('required')">Пароль не может быть пустым</small>
+        <small *ngIf="form.controls['password'].hasError('minlength')">
+          Длина пароля должна быть не меньше чем {{form.controls['password'].getError('minlength')['requiredLength']}} символов.
+        </small>
+      </div>
     </div>
 
     <div class="card">
