@@ -1,18 +1,21 @@
-import {Component} from '@angular/core';
-import {AppCounterService} from "./services/app-counter.service";
-import {LocalCounterService} from "./services/local-counter.service";
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [LocalCounterService]
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(
-    public appCounterService: AppCounterService,
-    public localCounterService: LocalCounterService
-  ) {
+  form!: FormGroup
+
+  ngOnInit(): void {
+    this.form = new FormGroup({})
+  }
+
+
+  submit() {
+    console.log('Form submitted: ', this.form)
   }
 }
