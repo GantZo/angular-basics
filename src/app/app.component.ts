@@ -7,6 +7,11 @@ export interface ToDo {
   id?: number
 }
 
+export interface ResponseToDo {
+  id?: number
+  todo: ToDo
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +20,8 @@ export interface ToDo {
 export class AppComponent implements OnInit {
 
   todos: ToDo[] = []
+
+  todoTitle = ''
 
   constructor(private http: HttpClient) {
   }
@@ -27,4 +34,19 @@ export class AppComponent implements OnInit {
       })
   }
 
+  addTodo() {
+    if (!this.todoTitle.trim()) {
+      return
+    }
+    const newTodo = {
+      title: this.todoTitle,
+      completed: false
+    }
+    this.http.post<ToDo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+      .subscribe(response => {
+        console.log(response)
+        this.todos.push(response)
+        this.todoTitle = ''
+      })
+  }
 }
