@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
       console.log('Form Data: ', formData)
     }
     console.log(this.form.controls)
+    this.form.reset()
   }
 
   setCapital() {
