@@ -12,6 +12,7 @@
         <small *ngIf="form.controls['email'].hasError('required')">Поле не может быть пустым</small>
         <small *ngIf="form.controls['email'].hasError('email')">Введите корректный email</small>
         <small *ngIf="form.controls['email'].hasError('restrictedEmail')">{{ form.controls['email'].value }} в черном списке</small>
+        <small *ngIf="form.controls['email'].hasError('uniqEmail')">{{ form.controls['email'].value }} занят</small>
       </div>
     </div>
 
@@ -60,7 +61,7 @@
       </div>
     </div>
 
-    <button class="btn" type="submit" [disabled]="form.invalid">Отправить</button>
+    <button class="btn" type="submit" [disabled]="form.invalid || form.pending">Отправить</button>
 
   </form>
 </div>
