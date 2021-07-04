@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {delay} from "rxjs/operators";
 import {ToDo, TodosService} from "./todos.service";
 
 @Component({
@@ -52,5 +50,14 @@ export class AppComponent implements OnInit {
         console.log(response)
         this.todos = this.todos.filter(f => f.id !== id)
       })
+  }
+
+  completeTodo(id: any) {
+    this.todoService.completeTodo(id).subscribe(todo => {
+      const foundTodo = this.todos.find(t => t.id === todo.id)
+      if (foundTodo) {
+        foundTodo.completed = todo.completed
+      }
+    })
   }
 }

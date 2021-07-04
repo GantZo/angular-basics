@@ -26,4 +26,11 @@ export class TodosService {
   removeTodo(id: any): Observable<void> {
     return this.http.delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`)
   }
+
+  completeTodo(id: any): Observable<ToDo> {
+    return this.http.put<ToDo>(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+      completed: true
+    })
+  }
+
 }
