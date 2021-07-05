@@ -21,19 +21,24 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      const incoming = this.postsService.getById(+params.id)
+    // this.post = this.route.snapshot.data.post
+    this.route.data.subscribe(data => {
+      this.post = data.post
+    })
+
+    // this.route.params.subscribe((params: Params) => {
+      // const incoming = this.postsService.getById(+params.id)
       // const incoming = this.postsService.getById(parseInt(params.id))
-      if (incoming) {
-        this.post = incoming
-      }
+      // if (incoming) {
+      //   this.post = incoming
+      // }
       // of(this.postsService.getById(parseInt(params.id)))
       //   .subscribe(post => {
       //     if (post) {
       //       this.post = post
       //     }
       //   })
-    })
+    // })
   }
 
   loadPost() {
