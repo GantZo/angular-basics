@@ -1,64 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ToDo, TodosService} from "./todos.service";
+import {Component} from '@angular/core'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-
-  todos: ToDo[] = []
-  loading = false
-  todoTitle = ''
-  error = ''
-
-  constructor(private todoService: TodosService) {
-  }
-
-  ngOnInit() {
-    this.fetchTodos()
-  }
-
-  addTodo() {
-    if (!this.todoTitle.trim()) {
-      return
-    }
-    this.todoService.addTodo({
-      title: this.todoTitle,
-      completed: false
-    })
-      .subscribe(response => {
-        this.todos.push(response)
-        this.todoTitle = ''
-      })
-  }
-
-  fetchTodos() {
-    this.loading = true
-    this.todoService.fetchTodos()
-      .subscribe(response => {
-        this.todos = response
-        this.loading = false
-      }, error => {
-        this.error = error.message
-      })
-  }
-
-  removeTodo(id: any) {
-    this.todoService.removeTodo(id)
-      .subscribe(response => {
-        console.log(response)
-        this.todos = this.todos.filter(f => f.id !== id)
-      })
-  }
-
-  completeTodo(id: any) {
-    this.todoService.completeTodo(id).subscribe(todo => {
-      const foundTodo = this.todos.find(t => t.id === todo.id)
-      if (foundTodo) {
-        foundTodo.completed = todo.completed
-      }
-    })
-  }
+export class AppComponent {
+  constructor() {}
 }
