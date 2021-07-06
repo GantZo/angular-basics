@@ -1,7 +1,4 @@
-import {Component, ComponentFactoryResolver, ViewChild} from '@angular/core'
-import {ModalComponent} from "./modal/modal.component";
-import {RefDirective} from "./ref.directive";
-import {Meta, Title} from "@angular/platform-browser";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,31 +6,5 @@ import {Meta, Title} from "@angular/platform-browser";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  @ViewChild(RefDirective)
-  refDir!: RefDirective;
-
-  constructor(
-    private resolver: ComponentFactoryResolver,
-    private title: Title,
-    private meta: Meta
-  ) {
-    title.setTitle('App Component Page')
-    meta.addTags([
-      {name: 'keywords', content: 'angular,google,yandex'},
-      {name: 'description', content: 'Angular basics application'}
-    ])
-  }
-
-  showModal() {
-    const modalFactory = this.resolver.resolveComponentFactory(ModalComponent)
-    this.refDir.containerRef.clear()
-    const component = this.refDir.containerRef.createComponent(modalFactory)
-
-    component.instance.title = 'Dynamic Title'
-    component.instance.close.subscribe(() => {
-      this.refDir.containerRef.clear()
-    })
-  }
+  title = 'angular-unit-tests';
 }
-
