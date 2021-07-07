@@ -19,6 +19,10 @@ export class PostsService {
     } else return EMPTY
   }
 
+  fetchPromise(): Promise<any[]> {
+    return this.http!.get<any[]>(``).toPromise()
+  }
+
   remove(id: number): Observable<any> {
     if (this.http) {
       return this.http.delete<void>(`${id}`)

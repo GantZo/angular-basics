@@ -1,6 +1,6 @@
 import {PostsComponent} from "./posts.component";
 import {PostsService} from "./posts.service";
-import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {HttpClientModule} from "@angular/common/http";
 import {of} from "rxjs";
 
@@ -23,7 +23,7 @@ describe('PostsComponent', () => {
     service = TestBed.inject(PostsService)
   })
 
-  it('should fetch posts on ngOnInit', function () {
+  xit('should fetch posts on ngOnInit', function () {
     const posts = [1, 2, 3]
     spyOn(service, 'fetch').and.returnValue(of(posts))
 
@@ -32,5 +32,28 @@ describe('PostsComponent', () => {
     expect(component.posts).toEqual(posts)
 
   });
+
+  it('should fetch posts on ngOnInit (promise)', async () => {
+    const posts = [1, 2, 3]
+    spyOn(service, 'fetchPromise').and.returnValue(Promise.resolve(posts))
+
+    fixture.detectChanges()
+
+    fixture.whenStable().then(() => {
+      expect(component.posts).toEqual(posts)
+      console.log('Expect CALLED')
+    })
+  })
+
+  it('should fetch posts on ngOnInit (promise) fakeAsync', fakeAsync(() => {
+    const posts = [1, 2, 3]
+    spyOn(service, 'fetchPromise').and.returnValue(Promise.resolve(posts))
+
+    fixture.detectChanges()
+
+    tick()
+    expect(component.posts).toEqual(posts)
+    console.log('Expect CALLED')
+  }))
 
 })
