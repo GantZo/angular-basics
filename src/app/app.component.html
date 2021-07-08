@@ -1,5 +1,13 @@
 <div class="wrap">
-  <div class="box">
+
+  <button (click)="animate()">Animate</button>
+
+  <hr />
+
+  <div
+    class="box"
+    [@box]="boxState"
+  >
 
   </div>
 </div>
