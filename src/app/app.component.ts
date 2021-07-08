@@ -23,12 +23,26 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
         style({background: 'green'}),
         animate('1s', style({background: 'pink'})),
         animate(750)
+      ]),
+      // void => *
+      transition(':enter', [
+        style({ opacity: 0}),
+        animate(850, style({opacity: 1}))
+      ]),
+      // * => void
+      transition(':leave', [
+        style({opacity: 1}),
+        animate(750, style({
+          opacity:0,
+          transform: 'scale(1.2)'
+        }))
       ])
     ])
   ]
 })
 export class AppComponent {
   boxState = 'start'
+  visible = true
 
   animate() {
     this.boxState = this.boxState === 'start' ? 'end' : 'start'
